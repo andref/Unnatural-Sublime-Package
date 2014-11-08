@@ -1,0 +1,8 @@
+# [PackageDev] target_format: plist, ext: tmPreferences
+---
+name: Symbol List
+scope: source.natural definition.view.natural
+uuid: E74BF5AD-F74B-49C0-AD81-346376D19665
+settings:
+  showInSymbolList: 1
+...

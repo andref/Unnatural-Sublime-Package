@@ -1,0 +1,11 @@
+[
+  // Insert a ruler after typing * three times
+  { "keys": ["*","*","*"],
+    "command": "insert_snippet",
+    "args": { "contents": "************************************************************************" },
+    "context":
+      [
+        { "key": "selector", "operator": "equal", "operand": "source.natural" }
+      ]
+  }
+]

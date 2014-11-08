@@ -1,0 +1,4 @@
+[
+    { "caption": "Natural: Comment Empty Lines", "command": "comment_empty_lines" },
+    { "caption": "Natural: Uncomment Empty Lines", "command": "uncomment_empty_lines" }
+]

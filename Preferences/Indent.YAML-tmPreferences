@@ -1,0 +1,10 @@
+# [PackageDev] target_format: plist, ext: tmPreferences
+---
+name: Indent
+scope: source.natural
+uuid: C2991450-80AC-4B84-802F-24AFF06A5565
+settings:
+  decreaseIndentPattern: '^\s*(else|end)\b.*:'
+  disableIndentNextLinePattern: ''
+  increaseIndentPattern: ^\s*(define subroutine|decide|else|for|if|while|find|read|histogram)\b.*:\s*$
+...

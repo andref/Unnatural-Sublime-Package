@@ -1,0 +1,126 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: Natural
+scopeName: source.natural
+fileTypes: [nat]
+uuid: 2d1c1e4a-c6cd-41c5-91b8-3e65e2ef5be9
+
+patterns:
+  - include: '#wrong'
+  - include: '#trailing-space'
+  - include: '#comments'
+  - include: '#data-definition'
+  - include: '#subroutine'
+  - include: '#hash-vars'
+  - include: '#keywords'
+  - include: '#operators'
+  - include: '#numbers'
+  - include: '#strings'
+  - include: '#punctuation'
+  - include: '#system-vars'
+  - include: '#variable-modifier'
+
+repository:
+
+# General stuff
+
+  wrong:
+    name: invalid
+    match: \t
+
+  trailing-space:
+    name: invalid.deprecated.trailing-whitespace
+    match: '[ \t]+$'
+
+  comments:
+    name: comment.natural
+    match: (^\*.*$|\/\*.*$)
+
+  hash-vars:
+    name: variable.natural
+    match: \#[a-zA-Z0-9-]+
+
+  numbers:
+    name: constant.numeric.natural
+    match: '[0-9]+[,.]?[0-9]*'
+
+  strings:
+    name: string.natural
+    begin: \'
+    beginCaptures:
+      '0': { name: punctuation.definition.string.natural }
+    end: \'
+    endCaptures:
+      '0': { name: punctuation.definition.string.natural }
+    applyEndPatternLast: 1
+    patterns:
+      - match: ''
+        name: constant.character.escape.apostrophe.natural
+
+# Data-definition rules
+
+  data-definition:
+    name: data.definition.natural
+    begin: (?i:define\s+data)
+    beginCaptures:
+      '0': { name: 'keyword.natural' }
+    end: (?i:end-define)
+    endCaptures:
+      '0': { name: 'keyword.natural' }
+    patterns:
+      - include: '#comments'
+      - include: '#data-definition-keywords'
+      - include: '#external-storage-area'
+      - include: '#variable-modifier'
+      - include: '#variable-type'
+      - include: '#view-definition'
+      - include: '#numbers'
+      - include: '#strings'
+
+  data-definition-keywords:
+    name: keyword.natural
+    match: \b(?i:with|view|value|result|redefine|parameter|optional|of|object|local|init|independent|global|dynamic|context|constant|const|by)
+
+  external-storage-area:
+      name: storage.definition.using.natural
+      match: (?i:(using)\s+([a-z0-9]+))
+      captures:
+        '1': { name: storage.definition.natural }
+        '2': { name: constant.numeric.natural }
+
+  variable-level:
+    name: constant.numeric.level.natural
+    match: ^\s*[0-9]+
+
+  variable-type:
+    name: entity.name.class.natural
+    match: (?<=\()(?i:[abnpu][0-9]+|i[148]|f[48]|[cdlt])
+
+  variable-modifier:
+    name: variable.parameter.natural
+    match: (?<=\()(?i:em|hd|pm|ad|al)=[^\)]+
+
+  view-definition:
+    name: definition.view.natural
+    match: ([a-zA-Z0-9\-]+)(?=\s+view)
+
+# Program-level rules
+
+  keywords:
+    name: keyword.natural
+    match: \b(?i:callnat|define|subroutine|fetch|end-define|end-decide|end-routine|end-norec|if|then|else|end-if|find number|find|end-find|reset|add|to|decide|on|first|value|of|with|display|write|input|read|work|file|set|ignore|escape|module|thru|no|records|found|routine|specified|none|top|bottom|true|false|perform|end)\b
+
+  system-vars:
+    name: constant.language
+    match: (?i:\*(winmgrvers|winmgr|window-ps|window-pos|window-ls|username|user|ui|ubound|type|tpvers|tpsys|tp|timx|timn|timestmp|timeout|time|timd|this-object|subroutine|steplib|startup|server-type|screenio|rowcount|program|pid|pf-name|pf-key|patch-level|parse-type|parse-row|pars-namespace-uri|parse-level|parse-col|parm-user|pagesize|page-number|pagelevel|page-event|osvers|os|opsys|occurrence|number|net-user|natvers|machineclass|log-ps|log-ls|locale|linesize|line-count|line|library-id|level|length|lbound|language|isn|init-user|init-program|initid|hostname|hardware|hardcopy|group|etid|error-ta|error-nr|error-line|devicedatx|datvs|datv|datu|datn|datj|dati|datg|date|datd|data|dat4u|dat4j|dat4i|da4e|dat4d|cursor|curs-line|curs-field|curs-col|current-unit|cputime|counter|convid|com|codepage|browser-io|applic-name|applic-id))
+
+  subroutine:
+    name: definition.subroutine.natural
+    match: (?<=subroutine)\s+([a-z0-9\-]+)
+    captures:
+      '1': { name: entity.name.function.natural }
+
+  operators:
+    name: keyword.operator.natural
+    match: \b(?i:eq|ne|lt|le|gt|ge|and|or|not)\b
+...
