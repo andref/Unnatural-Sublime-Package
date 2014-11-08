@@ -9,9 +9,9 @@
 	<key>settings</key>
 	<dict>
 		<key>decreaseIndentPattern</key>
-		<string>^\s*(else|end[a-zA-Z\-]+)\b</string>
+		<string>^\s*(else|end-)\b</string>
 		<key>increaseIndentPattern</key>
-		<string>(?x)^(\s*(?i:if|for|while|find|read|decide)).*$</string>
+		<string>(?x)^(\s*(?i:if|define\s+subroutine|for|while|find|read|decide)).*$</string>
 		<key>indentParens</key>
 		<false/>
 	</dict>
