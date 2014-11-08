@@ -3,6 +3,9 @@
 import sublime
 
 
+VERSION = '0.1.0'
+
+
 def is_natural_file(view):
     """Is this view editing a Natural file?"""
     syntax = view.settings().get('syntax')
