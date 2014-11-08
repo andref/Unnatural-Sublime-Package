@@ -11,7 +11,7 @@ May it inifinitesimally diminish your suffering.
 Features
 --------
 
-### Version 0.1
+### Version 0.1.0
 
 - Syntax highlighting (obviously)
 - Snippets for `if`, `if-else`, `define subroutine`
