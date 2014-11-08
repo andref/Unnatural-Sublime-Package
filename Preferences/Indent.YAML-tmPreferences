@@ -2,9 +2,9 @@
 ---
 name: Indent
 scope: source.natural
-uuid: C2991450-80AC-4B84-802F-24AFF06A5565
+uuid: 9C2B0C6D-9584-4EBF-A260-7C39AC5F5426
 settings:
-  decreaseIndentPattern: '^\s*(else|end)\b.*:'
-  disableIndentNextLinePattern: ''
-  increaseIndentPattern: ^\s*(define subroutine|decide|else|for|if|while|find|read|histogram)\b.*:\s*$
+  decreaseIndentPattern: ^\s*(else|end[a-zA-Z\-]+)\b
+  increaseIndentPattern: (?x)^(\s*(?i:if|for|while|find|read|decide)).*$
+  indentParens: false
 ...
