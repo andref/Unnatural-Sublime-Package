@@ -7,5 +7,23 @@
       [
         { "key": "selector", "operator": "equal", "operand": "source.natural" }
       ]
-  }
+  },
+  {
+    "keys": ["tab"],
+    "command": "indent_variable",
+    "context":
+      [
+        { "key": "selector", "operator": "equal", "operand": "data.definition.natural" },
+        { "key": "text", "operator": "regex_contains", "operand": "\n" }
+      ]
+  },
+  {
+    "keys": ["shift+tab"],
+    "command": "unindent_variable",
+    "context":
+      [
+        { "key": "selector", "operator": "equal", "operand": "data.definition.natural" },
+        { "key": "text", "operator": "regex_contains", "operand": "\n" }
+      ]
+  },
 ]
