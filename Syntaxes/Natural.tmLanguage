@@ -12,7 +12,15 @@
 	<array>
 		<dict>
 			<key>include</key>
+			<string>#data-definition</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#wrong</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#placeholder</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -21,10 +29,6 @@
 		<dict>
 			<key>include</key>
 			<string>#comments</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#data-definition</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -41,6 +45,10 @@
 		<dict>
 			<key>include</key>
 			<string>#operators</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#date-and-time</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -124,11 +132,27 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#system-vars</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#hash-vars</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#placeholder</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#numbers</string>
 				</dict>
 				<dict>
 					<key>include</key>
 					<string>#strings</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#wrong</string>
 				</dict>
 			</array>
 		</dict>
@@ -139,6 +163,21 @@
 			<key>name</key>
 			<string>keyword.natural</string>
 		</dict>
+		<key>date-and-time</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.datetime.natural</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>([tTdDeE]?)\'[0-9:\/\.\-]+\'</string>
+			<key>name</key>
+			<string>support.constant.datetime.natural</string>
+		</dict>
 		<key>external-storage-area</key>
 		<dict>
 			<key>captures</key>
@@ -146,12 +185,12 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>storage.definition.natural</string>
+					<string>keyword.natural</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
-					<string>constant.numeric.natural</string>
+					<string>string.object.natural</string>
 				</dict>
 			</dict>
 			<key>match</key>
@@ -169,16 +208,35 @@
 		<key>keywords</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?i:callnat|define|subroutine|fetch|end-define|end-decide|end-routine|end-norec|if|then|else|end-if|find number|find|end-find|reset|add|to|decide|on|first|value|of|with|display|write|input|read|work|file|set|ignore|escape|module|thru|no|records|found|routine|specified|none|top|bottom|true|false|perform|end)\b</string>
+			<string>\b(?i:write|work|window|screen|quarter|cursor|base|terminate|when|with|value|values|using|update|true|transaction|top|to|thru|then|substring|substr|subroutine|store|start|specified|space|sets|set|routine|rounded|result|reset|reject|records|read|processing|printer|perform|pc|page|on|of|numeric|null-handle|none|no|move|module|loop|length|leaving|into|input|ignore|if|giving|full|found|first|find number|find|file|fetch|false|every|escape|end-top|end-start|end-routine|end-norec|end-loop|end-if|end-find|end-file|end-endpage|end-enddata|end-define|end-decide|end-before|end|else|display|delimiters|define|decide|create|object|class|conversation|compute|compress|commit|close|callnat|callmode|calldbproc|call|break|bottom|before|backout|at|any|all|add|accept)\b</string>
 			<key>name</key>
 			<string>keyword.natural</string>
 		</dict>
 		<key>numbers</key>
 		<dict>
-			<key>match</key>
-			<string>[0-9]+[,.]?[0-9]*</string>
-			<key>name</key>
-			<string>constant.numeric.natural</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\b[\+\-]?[0-9]+[,.]?[0-9]*\b</string>
+					<key>name</key>
+					<string>constant.numeric.natural</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.hex.natural</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>([hH]?)\'[0-9a-fA-F]+\'</string>
+					<key>name</key>
+					<string>constant.numeric.hex.natural</string>
+				</dict>
+			</array>
 		</dict>
 		<key>operators</key>
 		<dict>
@@ -187,39 +245,84 @@
 			<key>name</key>
 			<string>keyword.operator.natural</string>
 		</dict>
+		<key>placeholder</key>
+		<dict>
+			<key>match</key>
+			<string>\b(?i:[0-9]+x)\b</string>
+			<key>name</key>
+			<string>support.constant.placeholder.natural</string>
+		</dict>
 		<key>strings</key>
 		<dict>
-			<key>applyEndPatternLast</key>
-			<integer>1</integer>
-			<key>begin</key>
-			<string>\'</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.natural</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>\'</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.string.natural</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>string.natural</string>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>match</key>
-					<string></string>
+					<key>applyEndPatternLast</key>
+					<integer>1</integer>
+					<key>begin</key>
+					<string>([uU]?)\'</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.unicode.natural</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\'</string>
 					<key>name</key>
-					<string>constant.character.escape.apostrophe.natural</string>
+					<string>string.natural</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>\'\'</string>
+							<key>name</key>
+							<string>constant.character.escape.natural</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>applyEndPatternLast</key>
+					<integer>1</integer>
+					<key>begin</key>
+					<string>([uU]?)\"</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.unicode.natural</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\"</string>
+					<key>name</key>
+					<string>string.natural</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>\"\"</string>
+							<key>name</key>
+							<string>constant.character.escape.natural</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.unicode.natural</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>(?i:(uh)\'[0-9a-f]+\')</string>
+					<key>name</key>
+					<string>string.unicode.hex.natural</string>
 				</dict>
 			</array>
 		</dict>
@@ -243,7 +346,7 @@
 			<key>match</key>
 			<string>(?i:\*(winmgrvers|winmgr|window-ps|window-pos|window-ls|username|user|ui|ubound|type|tpvers|tpsys|tp|timx|timn|timestmp|timeout|time|timd|this-object|subroutine|steplib|startup|server-type|screenio|rowcount|program|pid|pf-name|pf-key|patch-level|parse-type|parse-row|pars-namespace-uri|parse-level|parse-col|parm-user|pagesize|page-number|pagelevel|page-event|osvers|os|opsys|occurrence|number|net-user|natvers|machineclass|log-ps|log-ls|locale|linesize|line-count|line|library-id|level|length|lbound|language|isn|init-user|init-program|initid|hostname|hardware|hardcopy|group|etid|error-ta|error-nr|error-line|devicedatx|datvs|datv|datu|datn|datj|dati|datg|date|datd|data|dat4u|dat4j|dat4i|da4e|dat4d|cursor|curs-line|curs-field|curs-col|current-unit|cputime|counter|convid|com|codepage|browser-io|applic-name|applic-id))</string>
 			<key>name</key>
-			<string>constant.language</string>
+			<string>constant.language.natural</string>
 		</dict>
 		<key>trailing-space</key>
 		<dict>
@@ -257,21 +360,21 @@
 			<key>match</key>
 			<string>^\s*[0-9]+</string>
 			<key>name</key>
-			<string>constant.numeric.level.natural</string>
+			<string>support.constant.level.natural</string>
 		</dict>
 		<key>variable-modifier</key>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;=\()(?i:em|hd|pm|ad|al)=[^\)]+</string>
+			<string>(?&lt;=\()(?i:em|hd|pm|ad|al|cd)=[^\)]+</string>
 			<key>name</key>
 			<string>variable.parameter.natural</string>
 		</dict>
 		<key>variable-type</key>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;=\()(?i:[abnpu][0-9]+|i[148]|f[48]|[cdlt])</string>
+			<string>(?&lt;=\()(?i:[abu]|[abnpu][0-9]+|i[148]|f[48]|[cdlt])</string>
 			<key>name</key>
-			<string>entity.name.class.natural</string>
+			<string>storage.type.natural</string>
 		</dict>
 		<key>view-definition</key>
 		<dict>

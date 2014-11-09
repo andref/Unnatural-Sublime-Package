@@ -9,13 +9,13 @@
 	<key>settings</key>
 	<dict>
 		<key>decreaseIndentPattern</key>
-		<string>^\s*(else|end)\b.*:</string>
-		<key>disableIndentNextLinePattern</key>
-		<string></string>
+		<string>^\s*(else|end-)\b</string>
 		<key>increaseIndentPattern</key>
-		<string>^\s*(define subroutine|decide|else|for|if|while|find|read|histogram)\b.*:\s*$</string>
+		<string>(?x)^(\s*(?i:if|define\s+subroutine|for|while|find|read|decide)).*$</string>
+		<key>indentParens</key>
+		<false/>
 	</dict>
 	<key>uuid</key>
-	<string>C2991450-80AC-4B84-802F-24AFF06A5565</string>
+	<string>9C2B0C6D-9584-4EBF-A260-7C39AC5F5426</string>
 </dict>
 </plist>

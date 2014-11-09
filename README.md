@@ -1,15 +1,28 @@
 Natural Sublime Text Plugin
 ===========================
 
-This is a Sublime Text plugin for Software AG's Natural, Cobol's ugly,
-reatarded, babbling cousin. Made with <3 for those poor souls who — like me —
+This is a Sublime Text plugin for [Software AG's Natural][natural], Cobol's ugly,
+reatarded, babbling cousin. Made with ❤️ for those poor souls who — like me —
 must endure the abhorrence on their day jobs.
 
 May it inifinitesimally diminish your suffering.
 
+[natural]: http://www.softwareag.com/corporate/products/adabas_natural/natural/overview
+
 
 Features
 --------
+
+### Version 0.1.1
+
+- Automatic indentation of control structures and subroutines
+- Properly highlight unicode strings, date and time literals, and more keywords
+  (but not all three million of them yet)
+- Snippet for `decide on value` statement
+- Automatically add a ruler to column 72, preserving other rulers the user may
+  have defined
+- Update variable levels when they are indented and unindented
+- Key maps for Windows and Linux too
 
 ### Version 0.1.0
 
@@ -24,8 +37,6 @@ Features
 In the works
 ------------
 
-- Autoindent control structures and subroutine definitions
-- Increase variable level on indent
 - Autoindent variables when the level number is typed
 - Language for data-definition
 - Convert from natural-style to ugly-style data areas

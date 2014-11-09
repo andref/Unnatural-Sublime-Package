@@ -6,14 +6,16 @@ fileTypes: [nat]
 uuid: 2d1c1e4a-c6cd-41c5-91b8-3e65e2ef5be9
 
 patterns:
+  - include: '#data-definition'
   - include: '#wrong'
+  - include: '#placeholder'
   - include: '#trailing-space'
   - include: '#comments'
-  - include: '#data-definition'
   - include: '#subroutine'
   - include: '#hash-vars'
   - include: '#keywords'
   - include: '#operators'
+  - include: '#date-and-time'
   - include: '#numbers'
   - include: '#strings'
   - include: '#punctuation'
@@ -40,22 +42,49 @@ repository:
     name: variable.natural
     match: \#[a-zA-Z0-9-]+
 
+  date-and-time:
+    name: support.constant.datetime.natural
+    match: ([tTdDeE]?)\'[0-9:\/\.\-]+\'
+    captures:
+      '1': { name: punctuation.definition.datetime.natural }
+
   numbers:
-    name: constant.numeric.natural
-    match: '[0-9]+[,.]?[0-9]*'
+    patterns:
+    - name: constant.numeric.natural
+      match: '\b[\+\-]?[0-9]+[,.]?[0-9]*\b'
+    - name: constant.numeric.hex.natural
+      match: ([hH]?)\'[0-9a-fA-F]+\'
+      captures:
+        '1': { name: punctuation.definition.hex.natural }
+
+  placeholder:
+    name: support.constant.placeholder.natural
+    match: \b(?i:[0-9]+x)\b
 
   strings:
-    name: string.natural
-    begin: \'
-    beginCaptures:
-      '0': { name: punctuation.definition.string.natural }
-    end: \'
-    endCaptures:
-      '0': { name: punctuation.definition.string.natural }
-    applyEndPatternLast: 1
     patterns:
-      - match: ''
-        name: constant.character.escape.apostrophe.natural
+    - name: string.natural
+      begin: ([uU]?)\'
+      beginCaptures:
+        '1': { name: punctuation.definition.string.unicode.natural }
+      end: \'
+      applyEndPatternLast: 1
+      patterns:
+        - match: \'\'
+          name: constant.character.escape.natural
+    - name: string.natural
+      begin: ([uU]?)\"
+      beginCaptures:
+        '1': { name: punctuation.definition.string.unicode.natural }
+      end: \"
+      applyEndPatternLast: 1
+      patterns:
+        - match: \"\"
+          name: constant.character.escape.natural
+    - name: string.unicode.hex.natural
+      match: (?i:(uh)\'[0-9a-f]+\')
+      captures:
+        '1': { name: punctuation.definition.string.unicode.natural }
 
 # Data-definition rules
 
@@ -74,8 +103,12 @@ repository:
       - include: '#variable-modifier'
       - include: '#variable-type'
       - include: '#view-definition'
+      - include: '#system-vars'
+      - include: '#hash-vars'
+      - include: '#placeholder'
       - include: '#numbers'
       - include: '#strings'
+      - include: '#wrong'
 
   data-definition-keywords:
     name: keyword.natural
@@ -85,20 +118,20 @@ repository:
       name: storage.definition.using.natural
       match: (?i:(using)\s+([a-z0-9]+))
       captures:
-        '1': { name: storage.definition.natural }
-        '2': { name: constant.numeric.natural }
+        '1': { name: keyword.natural }
+        '2': { name: string.object.natural }
 
   variable-level:
-    name: constant.numeric.level.natural
+    name: support.constant.level.natural
     match: ^\s*[0-9]+
 
   variable-type:
-    name: entity.name.class.natural
-    match: (?<=\()(?i:[abnpu][0-9]+|i[148]|f[48]|[cdlt])
+    name: storage.type.natural
+    match: (?<=\()(?i:[abu]|[abnpu][0-9]+|i[148]|f[48]|[cdlt])
 
   variable-modifier:
     name: variable.parameter.natural
-    match: (?<=\()(?i:em|hd|pm|ad|al)=[^\)]+
+    match: (?<=\()(?i:em|hd|pm|ad|al|cd)=[^\)]+
 
   view-definition:
     name: definition.view.natural
@@ -108,10 +141,10 @@ repository:
 
   keywords:
     name: keyword.natural
-    match: \b(?i:callnat|define|subroutine|fetch|end-define|end-decide|end-routine|end-norec|if|then|else|end-if|find number|find|end-find|reset|add|to|decide|on|first|value|of|with|display|write|input|read|work|file|set|ignore|escape|module|thru|no|records|found|routine|specified|none|top|bottom|true|false|perform|end)\b
+    match: \b(?i:write|work|window|screen|quarter|cursor|base|terminate|when|with|value|values|using|update|true|transaction|top|to|thru|then|substring|substr|subroutine|store|start|specified|space|sets|set|routine|rounded|result|reset|reject|records|read|processing|printer|perform|pc|page|on|of|numeric|null-handle|none|no|move|module|loop|length|leaving|into|input|ignore|if|giving|full|found|first|find number|find|file|fetch|false|every|escape|end-top|end-start|end-routine|end-norec|end-loop|end-if|end-find|end-file|end-endpage|end-enddata|end-define|end-decide|end-before|end|else|display|delimiters|define|decide|create|object|class|conversation|compute|compress|commit|close|callnat|callmode|calldbproc|call|break|bottom|before|backout|at|any|all|add|accept)\b
 
   system-vars:
-    name: constant.language
+    name: constant.language.natural
     match: (?i:\*(winmgrvers|winmgr|window-ps|window-pos|window-ls|username|user|ui|ubound|type|tpvers|tpsys|tp|timx|timn|timestmp|timeout|time|timd|this-object|subroutine|steplib|startup|server-type|screenio|rowcount|program|pid|pf-name|pf-key|patch-level|parse-type|parse-row|pars-namespace-uri|parse-level|parse-col|parm-user|pagesize|page-number|pagelevel|page-event|osvers|os|opsys|occurrence|number|net-user|natvers|machineclass|log-ps|log-ls|locale|linesize|line-count|line|library-id|level|length|lbound|language|isn|init-user|init-program|initid|hostname|hardware|hardcopy|group|etid|error-ta|error-nr|error-line|devicedatx|datvs|datv|datu|datn|datj|dati|datg|date|datd|data|dat4u|dat4j|dat4i|da4e|dat4d|cursor|curs-line|curs-field|curs-col|current-unit|cputime|counter|convid|com|codepage|browser-io|applic-name|applic-id))
 
   subroutine:

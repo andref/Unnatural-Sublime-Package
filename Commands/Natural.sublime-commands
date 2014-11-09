@@ -1,4 +1,6 @@
 [
     { "caption": "Natural: Comment Empty Lines", "command": "comment_empty_lines" },
-    { "caption": "Natural: Uncomment Empty Lines", "command": "uncomment_empty_lines" }
+    { "caption": "Natural: Uncomment Empty Lines", "command": "uncomment_empty_lines" },
+    { "caption": "Natural: Indent Variable", "command": "indent_variable" },
+    { "caption": "Natural: Unindent Variable", "command": "unindent_variable" }
 ]

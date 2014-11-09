@@ -19,3 +19,17 @@ class PerformEventListener(sublime_plugin.EventListener):
             subroutines.sort()
             completions = [[sub, sub] for sub in subroutines]
             return (completions, sublime.INHIBIT_WORD_COMPLETIONS)
+
+
+class AddRulerToColumn72Listener(sublime_plugin.EventListener):
+    """Add a ruler to column 72 when a Natural file is opened. If the user has
+    other rulers, they're not messed with."""
+
+    def on_load(self, view):
+        if not util.is_natural_file(view):
+            return
+        rulers = view.settings().get('rulers')
+        if 72 not in rulers:
+            rulers.append(72)
+            rulers.sort()
+            view.settings().set('rulers', rulers)
