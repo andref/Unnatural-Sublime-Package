@@ -51,7 +51,7 @@ repository:
   numbers:
     patterns:
     - name: constant.numeric.natural
-      match: '[\+\-]?[0-9]+[,.]?[0-9]*'
+      match: '\b[\+\-]?[0-9]+[,.]?[0-9]*\b'
     - name: constant.numeric.hex.natural
       match: ([hH]?)\'[0-9a-fA-F]+\'
       captures:
@@ -104,6 +104,7 @@ repository:
       - include: '#variable-type'
       - include: '#view-definition'
       - include: '#system-vars'
+      - include: '#hash-vars'
       - include: '#placeholder'
       - include: '#numbers'
       - include: '#strings'
@@ -126,7 +127,7 @@ repository:
 
   variable-type:
     name: storage.type.natural
-    match: (?<=\()(?i:[abnpu][0-9]+|i[148]|f[48]|[cdlt])
+    match: (?<=\()(?i:[abu]|[abnpu][0-9]+|i[148]|f[48]|[cdlt])
 
   variable-modifier:
     name: variable.parameter.natural

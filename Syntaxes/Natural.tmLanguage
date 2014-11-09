@@ -136,6 +136,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#hash-vars</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#placeholder</string>
 				</dict>
 				<dict>
@@ -214,7 +218,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>[\+\-]?[0-9]+[,.]?[0-9]*</string>
+					<string>\b[\+\-]?[0-9]+[,.]?[0-9]*\b</string>
 					<key>name</key>
 					<string>constant.numeric.natural</string>
 				</dict>
@@ -368,7 +372,7 @@
 		<key>variable-type</key>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;=\()(?i:[abnpu][0-9]+|i[148]|f[48]|[cdlt])</string>
+			<string>(?&lt;=\()(?i:[abu]|[abnpu][0-9]+|i[148]|f[48]|[cdlt])</string>
 			<key>name</key>
 			<string>storage.type.natural</string>
 		</dict>
