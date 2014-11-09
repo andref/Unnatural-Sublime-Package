@@ -3,7 +3,7 @@
 import sublime
 
 
-VERSION = '0.1.0'
+VERSION = '0.1.1'
 
 _VAR_LEVEL = re.compile(r'^\s*(\d+).*$')
 
