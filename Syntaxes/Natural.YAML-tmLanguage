@@ -13,8 +13,8 @@ patterns:
   - include: '#comments'
   - include: '#subroutine'
   - include: '#hash-vars'
-  - include: '#keywords'
   - include: '#operators'
+  - include: '#keywords'
   - include: '#date-and-time'
   - include: '#numbers'
   - include: '#strings'
@@ -99,6 +99,7 @@ repository:
       - include: '#comments'
       - include: '#data-definition-keywords'
       - include: '#external-storage-area'
+      - include: '#variable-level'
       - include: '#variable-modifier'
       - include: '#variable-type'
       - include: '#view-definition'
@@ -154,5 +155,5 @@ repository:
 
   operators:
     name: keyword.operator.natural
-    match: \b(?i:eq|ne|lt|le|gt|ge|and|or|not)\b
+    match: \b(?i:thru|or|notequal|not|ne|lt|less\s+than\s+or\s+equal\s+to|less\s+than|less\s+equal|le|gt|greater\s+than\s+or\s+equal\s+to|greater\s+than|greater\s+equal|ge|equal\s+to|equal|eq|but|and)\b
 ...

@@ -40,11 +40,11 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#keywords</string>
+			<string>#operators</string>
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#operators</string>
+			<string>#keywords</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -57,10 +57,6 @@
 		<dict>
 			<key>include</key>
 			<string>#strings</string>
-		</dict>
-		<dict>
-			<key>include</key>
-			<string>#punctuation</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -117,6 +113,10 @@
 				<dict>
 					<key>include</key>
 					<string>#external-storage-area</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#variable-level</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -241,7 +241,7 @@
 		<key>operators</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?i:eq|ne|lt|le|gt|ge|and|or|not)\b</string>
+			<string>\b(?i:thru|or|notequal|not|ne|lt|less\s+than\s+or\s+equal\s+to|less\s+than|less\s+equal|le|gt|greater\s+than\s+or\s+equal\s+to|greater\s+than|greater\s+equal|ge|equal\s+to|equal|eq|but|and)\b</string>
 			<key>name</key>
 			<string>keyword.operator.natural</string>
 		</dict>
