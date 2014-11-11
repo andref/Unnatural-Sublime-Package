@@ -18,7 +18,6 @@ patterns:
   - include: '#date-and-time'
   - include: '#numbers'
   - include: '#strings'
-  - include: '#punctuation'
   - include: '#system-vars'
   - include: '#variable-modifier'
 

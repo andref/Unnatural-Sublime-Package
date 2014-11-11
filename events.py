@@ -1,7 +1,10 @@
 # encoding: utf-8
 
-import Natural.util as util
 import sublime, sublime_plugin
+try:
+    from . import util
+except ValueError:
+    import util
 
 
 class PerformEventListener(sublime_plugin.EventListener):
@@ -17,7 +20,7 @@ class PerformEventListener(sublime_plugin.EventListener):
             if not subroutines:
                 return None
             subroutines.sort()
-            completions = [[sub, sub] for sub in subroutines]
+            completions = [(sub, sub) for sub in subroutines]
             return (completions, sublime.INHIBIT_WORD_COMPLETIONS)
 
 

@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 import sublime
-
+import re
 
 VERSION = '0.1.1'
 
