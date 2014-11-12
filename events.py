@@ -14,7 +14,7 @@ class PerformEventListener(sublime_plugin.EventListener):
         if not util.is_natural_file(view):
             return None
         texts = util.text_preceding_points(view, points)
-        if all([text.strip().endswith('perform') for text in texts]):
+        if all([text.strip().lower().endswith('perform') for text in texts]):
             subroutines = util.find_text_by_selector(view,
                 'entity.name.function.natural')
             if not subroutines:
