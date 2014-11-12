@@ -3,9 +3,7 @@
 import sublime
 import re
 
-VERSION = '0.1.1'
-
-_VAR_LEVEL = re.compile(r'^\s*(\d+).*$')
+__version__ = '0.2.0'
 
 
 def is_natural_file(view):
@@ -28,6 +26,8 @@ def find_text_by_selector(view, selector):
     return [view.substr(region) for region in regions]
 
 
+__level__ = re.compile(r'^\s*(\d+).*$')
+
 def update_var_levels(view, edit, line, amount=+1):
     """Update the variable levels in the given line. If amount is +1,
 
@@ -39,8 +39,7 @@ def update_var_levels(view, edit, line, amount=+1):
 
     Variable levels never go below zero.
     """
-    text = view.substr(line)
-    match = _VAR_LEVEL.match(text)
+    match = __level__.match(view.substr(line))
     if not match:
         return
     start = match.start(1)
