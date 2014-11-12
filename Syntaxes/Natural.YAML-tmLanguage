@@ -167,7 +167,7 @@ repository:
   labels:
     patterns:
     - name: entity.name.tag.natural
-      match: ^\s*(?i:[a-z0-9]+\.)
+      match: ^\s*(?i:[a-z0-9]+\.)(?![\w])
     - name: entity.name.tag.reference.natural
       match: (?<=\()(?i:[a-z0-9]+\.)
 
