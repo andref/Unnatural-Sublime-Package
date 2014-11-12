@@ -34,5 +34,17 @@ class AddRulerToColumn72Listener(sublime_plugin.EventListener):
         rulers = view.settings().get('rulers')
         if 72 not in rulers:
             rulers.append(72)
-            rulers.sort()
+            rulers.sort() # why? to be neat.
             view.settings().set('rulers', rulers)
+
+
+class FixWordSeparatorsListener(sublime_plugin.EventListener):
+    """Fix the `word_separators` setting for a Natural view so that the hyphen
+    and hash sign can be considered parts of words."""
+
+    def on_load(self, view):
+        if not util.is_natural_file(view):
+            return
+        separators = view.settings().get('word_separators')
+        separators = separators.replace('-', '').replace('#', '')
+        view.settings().set('word_separators', separators)
