@@ -14,7 +14,7 @@ class PerformEventListener(sublime_plugin.EventListener):
         if not util.is_natural_file(view):
             return None
         texts = util.text_preceding_points(view, points)
-        if all([text.strip().lower().endswith('perform') for text in texts]):
+        if all([text.strip().lower().endswith(u'perform') for text in texts]):
             subroutines = util.find_text_by_selector(view,
                 'entity.name.function.natural')
             if not subroutines:
@@ -31,11 +31,11 @@ class AddRulerToColumn72Listener(sublime_plugin.EventListener):
     def on_load(self, view):
         if not util.is_natural_file(view):
             return
-        rulers = view.settings().get('rulers')
+        rulers = view.settings().get(u'rulers')
         if 72 not in rulers:
             rulers.append(72)
             rulers.sort() # why? to be neat.
-            view.settings().set('rulers', rulers)
+            view.settings().set(u'rulers', rulers)
 
 
 class FixWordSeparatorsListener(sublime_plugin.EventListener):
@@ -45,6 +45,6 @@ class FixWordSeparatorsListener(sublime_plugin.EventListener):
     def on_load(self, view):
         if not util.is_natural_file(view):
             return
-        separators = view.settings().get('word_separators')
-        separators = separators.replace('-', '').replace('#', '')
-        view.settings().set('word_separators', separators)
+        separators = view.settings().get(u'word_separators')
+        separators = separators.replace(u'-', u'').replace(u'#', u'')
+        view.settings().set(u'word_separators', separators)

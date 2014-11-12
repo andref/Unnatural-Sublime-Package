@@ -44,7 +44,7 @@ class CommentEmptyLines(sublime_plugin.TextCommand):
             empty_line = self.view.find('^\s*\R', last_point)
             if not empty_line:
                 break
-            self.view.replace(edit, empty_line, '*\n')
+            self.view.replace(edit, empty_line, u'*\n')
             last_point = empty_line.end()
 
     def is_enabled(self):
@@ -65,7 +65,7 @@ class UncommentEmptyLines(sublime_plugin.TextCommand):
             empty_line = self.view.find('^\*\s*\R', 0)
             if not empty_line:
                 break
-            self.view.replace(edit, empty_line, '\n')
+            self.view.replace(edit, empty_line, u'\n')
 
     def is_enabled(self):
         return util.is_natural_file(self.view)

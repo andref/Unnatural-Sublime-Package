@@ -8,7 +8,7 @@ __version__ = '0.2.0'
 
 def is_natural_file(view):
     """Is this view editing a Natural file?"""
-    syntax = view.settings().get('syntax')
+    syntax = view.settings().get(u'syntax')
     return syntax.endswith('Natural.tmLanguage')
 
 
