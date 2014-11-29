@@ -5,6 +5,6 @@ scope: source.natural
 uuid: 9C2B0C6D-9584-4EBF-A260-7C39AC5F5426
 settings:
   decreaseIndentPattern: ^\s*(else|end-)\b
-  increaseIndentPattern: (?x)^(\s*(?i:if|define\s+subroutine|for|while|find|read|histogram|decide|on\s+error|sort|interface)).*$
+  increaseIndentPattern: (?x)^(\s*(?i:if|define\s+subroutine|for|while|find|read|histogram|decide|on\s+error|sort|value)).*$
   indentParens: false
 ...
