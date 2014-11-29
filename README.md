@@ -1,17 +1,27 @@
-Natural Sublime Text Plugin
-===========================
+Unnatural: Natural (Software AG) Sublime Text Package
+=====================================================
 
-This is a Sublime Text plugin for [Software AG's Natural][natural], Cobol's ugly,
-reatarded, babbling cousin. Made with ❤️ for those poor souls who — like me —
-must endure the abhorrence on their day jobs.
+This is a Sublime Text plugin for [Software AG Natural][natural], Cobol's
+ugly, brain-damaged, BABBLING IN ALL-CAPS — but regrettably still healthy and
+strong — cousin.
 
-May it inifinitesimally diminish your suffering.
+Made with ❤️ for those poor souls who — like me — must endure the abhorrence on
+their day jobs. May it inifinitesimally diminish your suffering.
 
 [natural]: http://www.softwareag.com/corporate/products/adabas_natural/natural/overview
 
 
 Features
 --------
+
+### Version 0.2.0 — Oops
+
+- Renamed to **Unnatural** because, really...
+- Now compatible with ST2
+- Line labels
+- Understands all keywords — all 530 of them
+- No more f... words printed on the console
+- Consider the hyphen and hash sign as valid characters in an identifier
 
 ### Version 0.1.1
 
@@ -39,10 +49,12 @@ In the works
 
 - Autoindent variables when the level number is typed
 - Language for data-definition
-- Convert from natural-style to ugly-style data areas
+- Convert from natural-style to ugly-style data areas and back
 - Autocomplete view names for `find`, `histogram` and `read`
-- Autocomplete variable names when pressing . after a view name
+- Autocomplete variable names when pressing . after a view, group or redefined
+  name
 - Autocomplete object names (in the same project) for `callnat`
+- Handle "component based programing" 😏
 
 
 License

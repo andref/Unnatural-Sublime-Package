@@ -2,7 +2,7 @@
     <content><![CDATA[
 define subroutine ${1:name}
     $2
-end-routine
+end-subroutine
 ]]></content>
     <tabTrigger>sub</tabTrigger>
     <scope>source.natural</scope>

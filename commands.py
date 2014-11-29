@@ -1,8 +1,11 @@
 # encoding: utf-8
 
-import Natural.util as util
 import sublime, sublime_plugin
 import re
+try:
+    from . import util
+except ValueError:
+    import util
 
 
 class IndentVariableCommand(sublime_plugin.TextCommand):
@@ -12,7 +15,7 @@ class IndentVariableCommand(sublime_plugin.TextCommand):
         self.view.run_command('indent')
         for region in self.view.sel():
             for line in self.view.lines(region):
-                update_var_levels(self.view, edit, line, amount=+1)
+                util.update_var_levels(self.view, edit, line, amount=+1)
 
     def description(self):
         return 'Indent Variable'
@@ -22,11 +25,10 @@ class UnindentVariableCommand(sublime_plugin.TextCommand):
     """Unindent the region and decrease any variable levels."""
 
     def run(self, edit):
-        print('fudeu?')
         self.view.run_command('unindent')
         for region in self.view.sel():
             for line in self.view.lines(region):
-                update_var_levels(self.view, edit, line, amount=-1)
+                util.update_var_levels(self.view, edit, line, amount=-1)
 
     def description(self):
         return 'Unindent Variable'
@@ -42,7 +44,7 @@ class CommentEmptyLines(sublime_plugin.TextCommand):
             empty_line = self.view.find('^\s*\R', last_point)
             if not empty_line:
                 break
-            self.view.replace(edit, empty_line, '*\n')
+            self.view.replace(edit, empty_line, u'*\n')
             last_point = empty_line.end()
 
     def is_enabled(self):
@@ -63,7 +65,7 @@ class UncommentEmptyLines(sublime_plugin.TextCommand):
             empty_line = self.view.find('^\*\s*\R', 0)
             if not empty_line:
                 break
-            self.view.replace(edit, empty_line, '\n')
+            self.view.replace(edit, empty_line, u'\n')
 
     def is_enabled(self):
         return util.is_natural_file(self.view)

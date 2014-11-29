@@ -40,15 +40,19 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#keywords</string>
-		</dict>
-		<dict>
-			<key>include</key>
 			<string>#operators</string>
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#keywords</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#date-and-time</string>
+		</dict>
+		<dict>
+			<key>include</key>
+			<string>#labels</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -60,7 +64,7 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#punctuation</string>
+			<string>#keys</string>
 		</dict>
 		<dict>
 			<key>include</key>
@@ -120,6 +124,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#variable-level</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#variable-modifier</string>
 				</dict>
 				<dict>
@@ -159,7 +167,7 @@
 		<key>data-definition-keywords</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?i:with|view|value|result|redefine|parameter|optional|of|object|local|init|independent|global|dynamic|context|constant|const|by)</string>
+			<string>(?&lt;![\w-])(?i:with|view|value|result|redefine|parameter|optional|of|object|local|init|independent|global|dynamic|context|constant|const|by)(?![\w-])</string>
 			<key>name</key>
 			<string>keyword.natural</string>
 		</dict>
@@ -205,12 +213,37 @@
 			<key>name</key>
 			<string>variable.natural</string>
 		</dict>
+		<key>keys</key>
+		<dict>
+			<key>match</key>
+			<string>(?&lt;![\w-])(?i:p[af][0-9]+|entr|clr|)(?![\w-])</string>
+			<key>name</key>
+			<string>support.constant.key.natural</string>
+		</dict>
 		<key>keywords</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?i:write|work|window|screen|quarter|cursor|base|terminate|when|with|value|values|using|update|true|transaction|top|to|thru|then|substring|substr|subroutine|store|start|specified|space|sets|set|routine|rounded|result|reset|reject|records|read|processing|printer|perform|pc|page|on|of|numeric|null-handle|none|no|move|module|loop|length|leaving|into|input|ignore|if|giving|full|found|first|find number|find|file|fetch|false|every|escape|end-top|end-start|end-routine|end-norec|end-loop|end-if|end-find|end-file|end-endpage|end-enddata|end-define|end-decide|end-before|end|else|display|delimiters|define|decide|create|object|class|conversation|compute|compress|commit|close|callnat|callmode|calldbproc|call|break|bottom|before|backout|at|any|all|add|accept)\b</string>
+			<string>(?&lt;![\w-])(?i:year|xml|write|work|with|window|while|where|when|view|via|vertically|vert|variables|variable|vargraphic|values|value|val|using|user|used|upper|upload|update|until|unknown|unique|union|underlined|types|type|true|treq|translate|transfer|transaction|trailer|total|top|to|title|timezone|timestamp|time|thru|then|them|than|textvariable|textarea|text|terminate|tan|system|sync|symbol|suspend|suppressed|suppress|sum|subtract|substring|substr|subroutine|subprograms|subprogram|store|stop|step|status|static|statement|starting|start|stack|sqrt|sqlid|sql|specified|space|sound|sortkey|sorted|sort|some|skip|size|single|sin|show|short|sgn|settime|sets|set|server|sequence|separate|sensitive|send|selection|select|second|scroll|screen|scan|same|run|rulevar|rows|row|routine|rounded|rollback|right|reversed|returns|return|retry|retained|retain|ret|result|restore|response|resize|resetting|reset|required|request|reposition|reporter|report|replace|repeat|remainder|release|relationship|relation|rel|reject|reinput|referencing|referenced|reduce|redefine|recursively|records|record|rec|readonly|read|queryno|quarter|prty|prototype|property|program|profile|processing|process|printer|print|prefix|position|pos|policy|physical|pgup|pgdn|perform|pen|pattern|path|password|passw|pass|parse|parent|parameters|parameter|page|packageset|output|outer|order|or|options|optional|optimize|open|only|once|on|old|offset|off|of|occurrences|obtain|object|numeric|number|null-handle|null|notitle|notit|not|normalized|normalize|none|nohdr|node|no|nmin|newpage|ne|ncount|naver|native|namespace|named|name|multiply|multi-fetch|moving|move|more|month|module|modified|modal|minute|min|microsecond|mgid|method|messages|max|mask|mark|map|macroarea|lt|lower|loop|logical|log-ps|log-ls|log|locks|local|listed|lines|lindicator|limit|like|library-password|library|libpw|lib|level|less|length|left|leaving|leave|le|last|language|keys|key|keep|justified|just|join|isn|is|investigate|inverted|into|intersect|intermediate|interface4|interface|intercepted|integer|int|insert|insensitive|input|inner|initial|init|indicator|indexed|index|independent|incmac|including|included|include|incdir|incdic|inccont|inc|in|import|immediate|ignore|if|identical|id|hours|hour|horizontally|horiz|hold|histogram|hex|header|having|gui|gt|greater|globals|global|giving|give|gfid|get|generated|gen|ge|functions|function|full|from|framed|frac|found|forward|forms|formatting|formatted|format|form|for|float|first|find|final|filler|fill|file|fields|field|fetch|false|extracting|external|export|expand|exp|exit|exists|except|examine|every|event|even|escape|errors|error|erase|equal|eq|entire|enter|ending|endhoc|end-work|end-toppage|end-subroutine|end-start|end-sort|end-select|end-result|end-repeat|end-read|end-prototype|end-property|end-process|end-parse|end-parameters|end-norec|end-method|end-loop|end-interface|end-if|end-histogram|end-function|end-for|end-find|end-file|end-error|end-endpage|end-endfile|end-enddata|end-define|end-decide|end-class|end-browse|end-break|end-before|end-all|end|encoded|else|eject|edited|dynamic|download|doend|document|do|dnret|dnative|dlogon|dlogoff|divide|distinct|display|disp|disabled|direction|digits|dialog-id|dialog|descending|desc|delimiters|delimiter|delimited|delete|definition|define|decimal|decide|days|day|date|dataarea|data|cursor|current|coupled|count|cos|copy|copies|conversation|control|context|constant|const|condition|concat|compute|compress|compose|commit|command|codepage|coalesce|close|class|cipher|ciph|child|charposition|charlength|char|cdid|case|captioned|cap|callnat|calling|calldbproc|call|cabinet|by|but|browse|break|bottom|bot|block|between|before|base|backward|backout|avg|aver|auto|authorization|auth|attributes|att|atn|at|async|assigning|assign|ascending|asc|as|array|application|appl|any|and|alphabetically|alpha|all|alarm|after|add|activation|action|accept|absolute|abs)(?![\w-])</string>
 			<key>name</key>
 			<string>keyword.natural</string>
+		</dict>
+		<key>labels</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>^\s*(?i:[a-z0-9]+\.)(?![\w])</string>
+					<key>name</key>
+					<string>entity.name.tag.natural</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;=\()(?i:[a-z0-9]+\.)</string>
+					<key>name</key>
+					<string>entity.name.tag.reference.natural</string>
+				</dict>
+			</array>
 		</dict>
 		<key>numbers</key>
 		<dict>
@@ -218,7 +251,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\b[\+\-]?[0-9]+[,.]?[0-9]*\b</string>
+					<string>(?&lt;![\w-])[\+\-]?[0-9]+[,.]?[0-9]*(?![\w-])</string>
 					<key>name</key>
 					<string>constant.numeric.natural</string>
 				</dict>
@@ -241,14 +274,14 @@
 		<key>operators</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?i:eq|ne|lt|le|gt|ge|and|or|not)\b</string>
+			<string>(?&lt;![\w-])(?i:thru|or|notequal|not|ne|lt|less\s+than\s+or\s+equal\s+to|less\s+than|less\s+equal|le|gt|greater\s+than\s+or\s+equal\s+to|greater\s+than|greater\s+equal|ge|equal\s+to|equal|eq|but|and)(?![\w-])</string>
 			<key>name</key>
 			<string>keyword.operator.natural</string>
 		</dict>
 		<key>placeholder</key>
 		<dict>
 			<key>match</key>
-			<string>\b(?i:[0-9]+x)\b</string>
+			<string>(?&lt;![\w-])(?i:[0-9]+x)(?![\w-])</string>
 			<key>name</key>
 			<string>support.constant.placeholder.natural</string>
 		</dict>
@@ -365,14 +398,14 @@
 		<key>variable-modifier</key>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;=\()(?i:em|hd|pm|ad|al|cd)=[^\)]+</string>
+			<string>(?&lt;=\()(?i:ad|al|bx|cd|em|hd|pm)=[^\)]+</string>
 			<key>name</key>
 			<string>variable.parameter.natural</string>
 		</dict>
 		<key>variable-type</key>
 		<dict>
 			<key>match</key>
-			<string>(?&lt;=\()(?i:[abu]|[abnpu][0-9]+|i[148]|f[48]|[cdlt])</string>
+			<string>(?&lt;=\()(?i:[abu][0-9]*|[np][0-9\,\.]+|i0*[148]|f0*[48]|[cdlt])</string>
 			<key>name</key>
 			<string>storage.type.natural</string>
 		</dict>

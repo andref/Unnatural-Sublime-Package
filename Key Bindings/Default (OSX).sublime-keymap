@@ -25,5 +25,5 @@
         { "key": "selector", "operator": "equal", "operand": "data.definition.natural" },
         { "key": "text", "operator": "regex_contains", "operand": "\n" }
       ]
-  },
+  }
 ]
