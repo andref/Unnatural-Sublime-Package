@@ -1,8 +1,8 @@
 <snippet>
     <content><![CDATA[
-define subroutine ${1:name}
+DEFINE SUBROUTINE ${1:name}
     $2
-end-subroutine
+END-SUBROUTINE
 ]]></content>
     <tabTrigger>sub</tabTrigger>
     <scope>source.natural</scope>
