@@ -50,6 +50,6 @@ def update_var_levels(view, edit, line, amount=+1):
     new_level = int(level_string, base=10) + amount
     if new_level < 1:
         new_level = 1
-    new_level_string = unicode(new_level)
+    new_level_string = str(new_level)
     level_region = sublime.Region(line.begin() + start, line.begin() + end)
     view.replace(edit, level_region, new_level_string)
