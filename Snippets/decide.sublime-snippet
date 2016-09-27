@@ -1,11 +1,11 @@
 <snippet>
     <content><![CDATA[
-decide on ${1:first} value of ${2:variable}
-    value $3
-        $4
-    none
-        ${5:ignore}
-end-decide
+DECIDE ON ${1:FIRST }VALUE OF ${2:var}
+  VALUE $3
+    $4
+  NONE
+    ${5:IGNORE}
+END-DECIDE
 ]]></content>
     <tabTrigger>decid</tabTrigger>
     <scope>source.natural</scope>

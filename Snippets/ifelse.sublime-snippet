@@ -1,10 +1,10 @@
 <snippet>
     <content><![CDATA[
-if ${1:condition} then
-    $2
-else
-    $3
-end-if
+IF ${1:condition} THEN
+  $2
+ELSE
+  $3
+END-IF
 ]]></content>
     <tabTrigger>ifelse</tabTrigger>
     <scope>source.natural</scope>
