@@ -10,8 +10,22 @@ Made with ❤️ for those poor souls who<del>, like me,</del> must endure the a
 [natural]: http://www.softwareag.com/corporate/products/adabas_natural/natural/overview
 
 
+Installation
+------------
+
+Use the [Sublime Text Package Manager][stpm] to install "Unnatural" or [download the package][download] and copy it to your package folder (Preferences → Browse Packages...).
+
+[stpm]: https://packagecontrol.io/installation "Installation - Package Control"
+[download]: https://github.com/andref/Unnatural-Sublime-Package/archive/develop.zip "Download the latest version"
+
+
 Features
 --------
+
+### Version 0.2.2
+
+- Now available through Package Control
+- Improve how some code snippets are triggered
 
 ### Version 0.2.1
 
