@@ -1,11 +1,13 @@
 [
   // Insert a ruler after typing * three times
-  { "keys": ["*","*","*"],
+  {
+    "keys": ["*"],
     "command": "insert_snippet",
     "args": { "contents": "************************************************************************" },
     "context":
       [
-        { "key": "selector", "operator": "equal", "operand": "source.natural" }
+        { "key": "selector", "operator": "equal", "operand": "source.natural" },
+        { "key": "preceding_text", "operator": "regex_contains", "operand": "^\\*\\*$" }
       ]
   },
   {
