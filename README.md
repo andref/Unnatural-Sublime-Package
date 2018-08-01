@@ -5,7 +5,7 @@ This is a Sublime Text plugin for [Software AG Natural][natural], Cobol's
 ugly, brain-damaged, BABBLING IN ALL-CAPS — but regrettably still healthy and
 strong — cousin.
 
-Made with ❤️ for those poor souls who<del>, like me,</del> must endure the abhorrence on their day jobs. May it inifinitesimally diminish your suffering.
+Made with ❤️ for those poor souls who<del>, like me,</del> must endure the abhorrence on their day jobs. May it infinitesimally diminish your suffering.
 
 [natural]: http://www.softwareag.com/corporate/products/adabas_natural/natural/overview
 
